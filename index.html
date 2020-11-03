@@ -7,15 +7,20 @@
     <link href="assets/css/style.css" rel="stylesheet" />
   </head>
   <body>
+    <header class="header">
+      <nav class="header-nav">
+        <h2>دفترچه یادداشت</h2>
+      </nav>
+    </header>
     <main class="main">
       <aside class="aside">
         <section>
+          <h4>یادداشت خود را وارد نمایید</h4>
           <form action="#" id="form">
-            <label>عنوان: </label>
-            <input type="text" id="txtTitle" />
-            <label>نوشته: </label>
-            <textarea name="txtContent" id="txtContent" placeholder="متن خود را اینجا وارد کنید..."></textarea>
-            </form>
+            <input type="text" id="txtTitle" placeholder="موضوع یادداشت" />
+            <textarea placeholder="متن یادداشت" cols="50" rows="6"></textarea>
+            <button id="submit" name="submit">ثبت</button>
+          </form>
         </section>
       </aside>
       <article class="article">نمایش نوت ها اینجا</article>

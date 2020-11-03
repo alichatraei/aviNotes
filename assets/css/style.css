@@ -1,8 +1,12 @@
 * {
-  display: inline-block;
   margin: 0;
   direction: rtl;
   font-family: vazir;
+}
+body {
+  background-image: url("../img/bg.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 /* disable title display*/
 title {
@@ -36,19 +40,97 @@ title {
   font-family: vazir-black;
   src: url("../fonts/vazir-Black.woff");
 }
+/* header */
+.header {
+  width: 100%;
+  height: 5em;
+  text-align: center;
+  background-color: #ffbe0a;
+  opacity: 50%;
+  transition: 0.5s;
+  cursor: pointer;
+}
+.header:hover{
+  opacity: 100%;
+  transition: 0.5s;
+}
+/* header nav custom CSS */
+.header-nav {
+  padding-top: 0.5em;
+  font-size: 1.5em;
+}
 /* add custom CSS to HTML elements*/
 .main {
-  width: 100%;
+  display: flex;
   padding: 2em;
+}
+/* aside for add notes*/
+.aside {
+  padding: 0.5em 1em 1em 1em;
+  background-color: #ffde85;
+  border-radius: 0.5em;
+  box-shadow: 1em 1em 0.1em #ffc933;
+  text-align: center;
+  opacity: 60%;
+  transition: 0.5s;
+  cursor: pointer;
+}
+/* form */
+.aside form {
+  display: grid;
+}
+/* form input */
+.aside input {
+  font-size: 1em;
+  margin-bottom: 1em;
+  border: none;
+  outline: none;
+  background-color: #ffe9ad;
+  padding: 0.8em;
+  color: #b53b03;
+}
+/* Input Focus */
+input:focus {
+  border-bottom: 0.3em solid #ffce47;
+  border-radius: 0.5em;
+  transition: 0.3s;
+}
+/* Text area */
+.aside textarea {
+  font-size: 1em;
+  outline: none;
+  background-color: #ffe9ad;
+  border: none;
+  padding: 0.8em;
+  color: #b53b03;
+}
+/* Textarea focus */
+.aside textarea:focus {
+  border-bottom: 0.3em solid #ffce47;
+  border-radius: 0.5em;
+  transition: 0.3s;
+}
+/* form Button*/
+.aside button {
+  cursor: pointer;
+  border: none;
+  margin-top: 1em;
+  background-color: #fd905e;
+  color: black;
+  outline: none;
+  border-radius: 0.5em;
+  transition: 0.3s;
 }
 
-.aside {
-  padding: 2em;
-  background-color: aliceblue;
+/* Button hover */
+.aside button:hover {
+  background-color: #b63b02;
+  color: white;
+  transition: 0.3s;
 }
-.aside form {
-  display: inline;
-}
+/* article for show Notes */
 .article {
-  background-color: azure;
+  margin-right: 2em;
+  width: 80%;
+  background-color: #ffde85;
 }
