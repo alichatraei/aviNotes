@@ -1,0 +1,54 @@
+* {
+  display: inline-block;
+  margin: 0;
+  direction: rtl;
+  font-family: vazir;
+}
+/* disable title display*/
+title {
+  display: none;
+}
+
+/* Load Fonts from assets folder */
+
+@font-face {
+  font-family: vazir;
+  src: url("../fonts/vazir.woff");
+}
+
+@font-face {
+  font-family: vazir-thin;
+  src: url("../fonts/vazir-Thin.woff");
+}
+@font-face {
+  font-family: vazir-medium;
+  src: url("../fonts/vazir-Medium.woff");
+}
+@font-face {
+  font-family: vazir-light;
+  src: url("../fonts/vazir-Light.woff");
+}
+@font-face {
+  font-family: vazir-bold;
+  src: url("../fonts/vazir-Bold.woff");
+}
+@font-face {
+  font-family: vazir-black;
+  src: url("../fonts/vazir-Black.woff");
+}
+/* add custom CSS to HTML elements*/
+.main {
+  width: 100%;
+  padding: 2em;
+}
+
+.aside {
+  padding: 2em;
+  background-color: aliceblue;
+}
+.aside form {
+  display: inline;
+}
+.article {
+  background-color: azure;
+}
