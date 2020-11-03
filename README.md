@@ -1,2 +1,2 @@
-# aviNotes
+# AviNotes
 Notes project (HTML,CSS,JS)
