@@ -1,12 +1,10 @@
 * {
   margin: 0;
   direction: rtl;
-  font-family: vazir;
 }
 body {
-  background-image: url("../img/bg.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
+  background-color: #f8f9fa;
+  font-family: vazir;
 }
 /* disable title display*/
 title {
@@ -45,12 +43,12 @@ title {
   width: 100%;
   height: 5em;
   text-align: center;
-  background-color: #ffbe0a;
+  background-color: #dce0e5;
   opacity: 50%;
   transition: 0.5s;
   cursor: pointer;
 }
-.header:hover{
+.header:hover {
   opacity: 100%;
   transition: 0.5s;
 }
@@ -66,47 +64,58 @@ title {
 }
 /* aside for add notes*/
 .aside {
+  position: fixed relative;
   padding: 0.5em 1em 1em 1em;
-  background-color: #ffde85;
+  background-color: #dce0e5;
   border-radius: 0.5em;
-  box-shadow: 1em 1em 0.1em #ffc933;
   text-align: center;
   opacity: 60%;
   transition: 0.5s;
-  cursor: pointer;
+}
+/* aside hover */
+.aside:hover {
+  transition: 0.5s;
+  box-shadow: 0.2em 0.2em 0.3em #9098a0;
+  opacity: 100%;
 }
 /* form */
 .aside form {
+  margin-top: 1em;
   display: grid;
 }
 /* form input */
 .aside input {
+  border-radius: 0.1em;
+  font-family: vazir;
   font-size: 1em;
   margin-bottom: 1em;
   border: none;
   outline: none;
-  background-color: #ffe9ad;
+  background-color: #b9c2ca;
   padding: 0.8em;
-  color: #b53b03;
+  color: #343a40;
+  transition: 0.5s;
 }
 /* Input Focus */
 input:focus {
-  border-bottom: 0.3em solid #ffce47;
+  box-shadow: 0.1em 0.2em 0.3em;
   border-radius: 0.5em;
   transition: 0.3s;
 }
 /* Text area */
 .aside textarea {
+  font-family: vazir;
   font-size: 1em;
   outline: none;
-  background-color: #ffe9ad;
+  background-color: #b9c2ca;
   border: none;
   padding: 0.8em;
-  color: #b53b03;
+  color: #343a40;
+  transition: 0.5s;
 }
 /* Textarea focus */
 .aside textarea:focus {
-  border-bottom: 0.3em solid #ffce47;
+  box-shadow: 0.1em 0.2em 0.3em;
   border-radius: 0.5em;
   transition: 0.3s;
 }
@@ -115,22 +124,95 @@ input:focus {
   cursor: pointer;
   border: none;
   margin-top: 1em;
-  background-color: #fd905e;
-  color: black;
+  background-color: #41474e;
+  color: #dce0e5;
   outline: none;
   border-radius: 0.5em;
   transition: 0.3s;
+  font-family: vazir;
+  font-size: 1.1em;
 }
 
 /* Button hover */
 .aside button:hover {
-  background-color: #b63b02;
-  color: white;
+  background-color: #dde0e3;
+  color: #495057;
   transition: 0.3s;
 }
 /* article for show Notes */
 .article {
   margin-right: 2em;
   width: 80%;
-  background-color: #ffde85;
+  padding: 0.5em 1em 1em 1em;
+  background-color: #dce0e5;
+  border-radius: 0.5em;
+  text-align: center;
+  opacity: 60%;
+  transition: 0.5s;
+}
+/* article hover */
+.article:hover {
+  transition: 0.5s;
+  opacity: 100%;
+  box-shadow: 0.2em 0.2em 0.3em #9098a0;
+}
+/* add CSS to section which shows the Notes */
+.section {
+  background-color: #f3f5f6;
+  border-radius: 0.3em;
+  /* box-shadow: 0.1em 0.2em 0.5em #9098a0; */
+  transition: 0.5s;
+}
+/* section focus */
+.section:hover {
+  transition: 0.5s;
+  box-shadow: 0.2em 0.2em 0.3em #9098a0;
+  opacity: 100%;
+}
+/* noteContents Id  */
+#noteContents {
+  text-align: justify;
+  margin: 0.6em 0.9em 0em 0.9em;
+}
+/* #note Date Id */
+#date {
+  padding: 0em 0.9em 0.8em 0.9em;
+  text-align: left;
+}
+/* Note's titles */
+#title {
+  padding: 0.5em 0.9em 0em 0.9em;
+  text-align: right;
+}
+/* P CSS */
+#title p {
+  border-bottom: 0.1em solid #41474e;
+}
+/* Image  */
+#title img {
+  width: 1em;
+  height: 1em;
+  float: left;
+  padding-top: 0.2em;
+  cursor: pointer;
+}
+/* Footer CSS */
+.footer {
+  position: absolute;
+  width: 100%;
+  height: 5em;
+  bottom: 0;
+  text-align: center;
+  background-color: #dce0e5;
+  opacity: 50%;
+  transition: 0.5s;
+  
+}
+.footer:hover {
+  opacity: 100%;
+  transition: 0.5s;
+}
+.footer p{
+  margin-top: 1em;
+  font-size: 1.4em;
 }
