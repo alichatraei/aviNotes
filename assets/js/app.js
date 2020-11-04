@@ -1,102 +1,119 @@
-// variables
-let titleValue = [],
-  contentValue = [];
+//-----> Variables
+let article = document.querySelector(".article");
+//for load Data from LocalStorage
+
+// get form values
+let titleLS,
+  contentLS = [];
+//for push Data to LocalStorage
+
+const titleInput = document.querySelector("#txtTitle").value;
+const contentInput = document.querySelector("#contentText").value;
+//-----> eventListeners
 eventListeners();
-//eventListeners
 function eventListeners() {
-  //select Button element
   document.querySelector("#submit").addEventListener("click", addNote);
-  document.addEventListener("DOMContentLoaded", loadNotesFromLS);
+  document.querySelector(".article").addEventListener("click", removeNote);
+  document.addEventListener("DOMContentLoaded", getNoteFromLS);
 }
+//-----> functions
 
-//Functions
-//addNote
-function addNote(info) {
-  //preventDefault
-  info.preventDefault();
-  //get value of the elements
-  const selectTitleInput = document.querySelector("#txtTitle").value;
-  const selectContentInput = document.querySelector("#contentText").value;
-  //check are inputs empty or not ?
-  if (selectTitleInput === "" && selectTitleInput === "")
-    alert("لطفا مقادیر صحیح وارد نمایید");
-  else {
-    //call add Notes to LocalStorage
-    addNotesToLS(selectTitleInput, selectContentInput);
-    //call create elements function
-    const sectionElement = document.createElement("section");
-    createTitleElement(selectTitleInput, sectionElement);
-    createContentElement(selectContentInput, sectionElement);
-    createDateElement("تاریخ", sectionElement);
-  }
-}
-// create title element function
-function createTitleElement(Title, sectionElement) {
-  const selectArticle = document.querySelector(".article");
-  const addDiv = document.createElement("div");
-  const addP = document.createElement("p");
-  const addImg = document.createElement("img");
-
-  selectArticle.appendChild(sectionElement);
-  sectionElement.setAttribute("class", "section");
-  sectionElement.appendChild(addDiv);
-  addDiv.setAttribute("id", "title");
-  addDiv.appendChild(addP);
-  addP.appendChild(document.createTextNode(Title));
-  addP.appendChild(addImg);
-  addImg.setAttribute("src", "assets/Img/Remove.png");
-}
-//Create content element function
-function createContentElement(Content, sectionElement) {
-  const secondDiv = document.createElement("div");
-  sectionElement.appendChild(secondDiv);
-  secondDiv.setAttribute("id", "noteContents");
-  const secondP = document.createElement("p");
-  secondDiv.appendChild(secondP);
-  secondP.appendChild(document.createTextNode(Content));
-}
-//create date element function
-function createDateElement(Date, sectionElement) {
-  const thirdDiv = document.createElement("div");
-  const thirdP = document.createElement("p");
-  sectionElement.appendChild(thirdDiv);
-  thirdDiv.setAttribute("id", "date");
-  thirdDiv.appendChild(thirdP);
-  thirdP.appendChild(document.createTextNode(Date));
-}
-// Load Notes to LocalStorage
-function loadNotesFromLS() {
-  let titleNotes;
-  let contentNotes;
-
-  if (
-    (localStorage.getItem("titleNotes") &&
-      localStorage.getItem("contentNotes")) === null
-  ) {
-    titleNotes = [];
-    contentNotes = [];
+//add Note function
+function addNote(e) {
+  //preventDefault - No action
+  e.preventDefault();
+  const titleInput = document.querySelector("#txtTitle").value;
+  const contentInput = document.querySelector("#contentText").value;
+  //condition for doesn't empty the values - Validation
+  if ((titleInput && contentInput) == "") {
+    alert("لطفا مقادیر را وارد نمایید");
   } else {
-    titleNotes = JSON.parse(localStorage.getItem("titleNotes"));
-    contentNotes = JSON.parse(localStorage.getItem("contentNotes"));
-
-    showNotesOnLoadedForm(titleNotes, contentNotes);
+    //create Elements with Functions
+    const section = document.createElement("section");
+    section.setAttribute("class", "section");
+    article.appendChild(section);
+    createTitleElement(section, titleInput);
+    createContentElement(section, contentInput);
+    createDateElement(section, "تاریخ");
+    addNoteToLS(titleInput, contentInput);
   }
+}
+//create Title Element - Function
+function createTitleElement(section, titleInput) {
+  //create elements
+  const div = document.createElement("div");
+  section.appendChild(div);
+  div.setAttribute("id", "title");
+  const p = document.createElement("p");
+  div.appendChild(p);
+  p.appendChild(document.createTextNode(titleInput));
+  const img = document.createElement("img");
+  img.setAttribute("src", "assets/img/remove.png");
+  img.setAttribute("id", "removeBtn");
+  p.appendChild(img);
+}
+//create Content Element - function
+function createContentElement(section, contentInput) {
+  const div = document.createElement("div");
+  section.appendChild(div);
+  div.setAttribute("id", "noteContents");
+  const p = document.createElement("p");
+  div.appendChild(p);
+  p.appendChild(document.createTextNode(contentInput));
+}
+//create Date Element - Function
+function createDateElement(section, date) {
+  const div = document.createElement("div");
+  section.appendChild(div);
+  div.setAttribute("id", "date");
+  const p = document.createElement("p");
+  div.appendChild(p);
+  p.appendChild(document.createTextNode(date));
+}
+//remove notes function
+function removeNote(e) {
+  //remove section which created
+  if (e.target.id === "removeBtn") {
+    document.querySelector(".section").remove();
+  }
+}
+//get Notes from LocalStorage
+function getNoteFromLS() {
+  //insert LS Title & Content Note Value in variables
+  const titleValue = JSON.parse(localStorage.getItem("titleNotes"));
+  const contentValue = JSON.parse(localStorage.getItem("contentNotes"));
 
-  console.log(titleNotes);
-  return titleNotes, contentNotes;
+  getNotesFromLSWhenOnLoaded();
+
+  return [titleValue, contentValue];
 }
-//add notes to LocalStorage
-function addNotesToLS(Title, Content) {
-  // push values in array
-  titleValue.push(Title);
-  contentValue.push(Content);
-  localStorage.setItem("titleNotes", JSON.stringify(titleValue));
-  localStorage.setItem("contentNotes", JSON.stringify(contentValue));
+//add Notes to LocalStorage
+function addNoteToLS(title, content) {
+  //create variables for push parameters in LocalStorage
+  const [addTitle, addContent] = getNoteFromLS();
+  console.log(getNoteFromLS());
+  addTitle.push(title);
+  addContent.push(content);
+  //insert values
+  localStorage.setItem("titleNotes", JSON.stringify(addTitle));
+  localStorage.setItem("contentNotes", JSON.stringify(addContent));
 }
-// show Notes from localStorage in Elements which created
-function showNotesOnLoadedForm(titleNotes, contentNotes) {
-  const sectionElement = document.createElement("section");
-  createTitleElement(titleNotes, sectionElement);
-  createContentElement(contentNotes, sectionElement);
-  createDateElement("تاریخ", sectionElement);
+//get Notes and Show them in Created Elements
+function getNotesFromLSWhenOnLoaded() {
+  //Validate
+
+  const titleValue = JSON.parse(localStorage.getItem("titleNotes"));
+  const contentValue = JSON.parse(localStorage.getItem("contentNotes"));
+  if ((titleValue && contentValue) !== null) {
+    for (let index = 0; index < titleValue.length; index++) {
+      const section = document.createElement("section");
+      section.setAttribute("class", "section");
+      article.appendChild(section);
+      createTitleElement(section, titleValue[index]);
+      createContentElement(section, contentValue[index]);
+      createDateElement(section, "تاریخ");
+    }
+  }
 }
+//remove notes form LocalStorage when remove button clicked
+function removeNoteFromLS() {}
