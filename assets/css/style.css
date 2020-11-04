@@ -162,6 +162,7 @@ input:focus {
   border-radius: 0.3em;
   /* box-shadow: 0.1em 0.2em 0.5em #9098a0; */
   transition: 0.5s;
+  margin-top: 1em;
 }
 /* section focus */
 .section:hover {
