@@ -61,9 +61,13 @@ title {
 .main {
   display: flex;
   padding: 2em;
+  margin-bottom: 10em;
 }
 /* aside for add notes*/
-.aside {
+.nav {
+  display: flex;
+  float: right;
+  margin: 2em 2em;
   position: fixed relative;
   padding: 0.5em 1em 1em 1em;
   background-color: #dce0e5;
@@ -73,18 +77,18 @@ title {
   transition: 0.5s;
 }
 /* aside hover */
-.aside:hover {
+.nav:hover {
   transition: 0.5s;
   box-shadow: 0.2em 0.2em 0.3em #9098a0;
   opacity: 100%;
 }
 /* form */
-.aside form {
+.nav form {
   margin-top: 1em;
   display: grid;
 }
 /* form input */
-.aside input {
+.nav input {
   border-radius: 0.1em;
   font-family: vazir;
   font-size: 1em;
@@ -103,7 +107,7 @@ input:focus {
   transition: 0.3s;
 }
 /* Text area */
-.aside textarea {
+.nav textarea {
   font-family: vazir;
   font-size: 1em;
   outline: none;
@@ -114,13 +118,13 @@ input:focus {
   transition: 0.5s;
 }
 /* Textarea focus */
-.aside textarea:focus {
+.nav textarea:focus {
   box-shadow: 0.1em 0.2em 0.3em;
   border-radius: 0.5em;
   transition: 0.3s;
 }
 /* form Button*/
-.aside button {
+.nav button {
   cursor: pointer;
   border: none;
   margin-top: 1em;
@@ -134,7 +138,7 @@ input:focus {
 }
 
 /* Button hover */
-.aside button:hover {
+.nav button:hover {
   background-color: #dde0e3;
   color: #495057;
   transition: 0.3s;
@@ -199,7 +203,7 @@ input:focus {
 }
 /* Footer CSS */
 .footer {
-  position: absolute;
+  position: fixed;
   width: 100%;
   height: 5em;
   bottom: 0;
@@ -207,13 +211,12 @@ input:focus {
   background-color: #dce0e5;
   opacity: 50%;
   transition: 0.5s;
-  
 }
 .footer:hover {
   opacity: 100%;
   transition: 0.5s;
 }
-.footer p{
+.footer p {
   margin-top: 1em;
   font-size: 1.4em;
 }

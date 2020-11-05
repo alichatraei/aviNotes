@@ -1,7 +1,8 @@
 //-----> Variables
 let article = document.querySelector(".article");
 //for load Data from LocalStorage
-
+let addTitle = [],
+  addContent = [];
 // get form values
 let titleLS,
   contentLS = [];
@@ -74,29 +75,30 @@ function createDateElement(section, date) {
 function removeNote(e) {
   //remove section which created
   if (e.target.id === "removeBtn") {
-    document.querySelector(".section").remove();
+    e.target.parentElement.parentElement.parentElement.remove();
   }
+
+  removeNoteFromLS(e.target.parentElement.textContent);
 }
 //get Notes from LocalStorage
 function getNoteFromLS() {
   //insert LS Title & Content Note Value in variables
   const titleValue = JSON.parse(localStorage.getItem("titleNotes"));
   const contentValue = JSON.parse(localStorage.getItem("contentNotes"));
-
-  getNotesFromLSWhenOnLoaded();
-
-  return [titleValue, contentValue];
+  if ((titleValue && contentValue) === null) {
+    (titleValue = []), (contentValue = []);
+  } else getNotesFromLSWhenOnLoaded();
 }
 //add Notes to LocalStorage
 function addNoteToLS(title, content) {
   //create variables for push parameters in LocalStorage
-  const [addTitle, addContent] = getNoteFromLS();
-  console.log(getNoteFromLS());
+
   addTitle.push(title);
   addContent.push(content);
   //insert values
   localStorage.setItem("titleNotes", JSON.stringify(addTitle));
   localStorage.setItem("contentNotes", JSON.stringify(addContent));
+  console.log("object");
 }
 //get Notes and Show them in Created Elements
 function getNotesFromLSWhenOnLoaded() {
@@ -116,4 +118,18 @@ function getNotesFromLSWhenOnLoaded() {
   }
 }
 //remove notes form LocalStorage when remove button clicked
-function removeNoteFromLS() {}
+function removeNoteFromLS(txtTitle) {
+  //load data from LocalStorage
+  const titleNote = JSON.parse(localStorage.getItem("titleNotes"));
+  const contentNote = JSON.parse(localStorage.getItem("contentNotes"));
+  //process in titleNote array 
+  for (let index = 0; index < titleNote.length; index++) {
+    if (txtTitle == titleNote[index]) {
+      titleNote.splice(index, 1);
+      contentNote.splice(index, 1);
+    }
+  }
+  //set new Items to localStorage
+  localStorage.setItem("titleNotes", JSON.stringify(titleNote));
+  localStorage.setItem("contentNotes", JSON.stringify(contentNote));
+}
